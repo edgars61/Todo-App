@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import MainReducer from './reducers/MainReducer'
+import {NavigationBar} from './components/NavigationBar'
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Route, Switch, BrowserRouter } from "react-router-dom";
+import ContactForm from './components/ContactForm'
+import About from './components/About';
+import Footer from './components/Footer';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const store = compose(window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore)(MainReducer)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<Provider store={store}>
+  <BrowserRouter>
+  <Router>
+  <NavigationBar />
+  <Route path="/Contact" component={ContactForm}/>
+  <Route path="/Todos" component={App}/>
+  <Route path="/About" component={About}/>
+  </Router>
+  </BrowserRouter>
+  <Footer/>
+  </Provider>, document.getElementById('root'));

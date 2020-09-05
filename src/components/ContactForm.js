@@ -1,72 +1,82 @@
 import React from 'react';
-import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import axios from 'axios';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom'
+
 const Styles = styled.div`
-  form{
-    text-align:center;
+form{
+  margin:auto;
+  text-align:center;
+}
+
+`
+
+class App extends React.Component{
+  
+  constructor(props) {
+	super(props);
+	this.state = {
+  	name: '',
+  	email: '',
+  	message: ''
+	}
   }
-  .input{
-    text-align:center;
-    width:50%;
-    margin:auto;
-    background-color:orange;
+
+  handleSubmit(e){
+    e.preventDefault();
+    axios({
+      method: "POST", 
+      url:"http://localhost:3002/send", 
+      data:  this.state
+    }).then((response)=>{
+      if (response.data.status === 'success'){
+        alert("Message Sent."); 
+        this.resetForm()
+      }else if(response.data.status === 'fail'){
+        alert("Message failed to send.")
+      }
+    })
   }
-  @media only screen and (max-width: 600px) {
-    .input {
-      width:90%;
-    }
+
+  resetForm(){
+    
+     this.setState({name: '', email: '', message: ''})
   }
-  .navbar { 
-    background-color: #222; 
+  
+  render() {
+	return(
+    <Styles>
+  	<div className="App">
+  	<form className="col-9 col-md-6 col-lg-4 col-xl-4" id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+  	<div className="form-group">
+      	<label htmlFor="name">Name</label>
+      	<input type="text" className="form-control" id="name" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+  	</div>
+  	<div className="form-group">
+      	<label htmlFor="exampleInputEmail1">Email address</label>
+      	<input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+  	</div>
+  	<div className="form-group">
+      	<label htmlFor="message">Message</label>
+      	<textarea className="form-control" rows="5" id="message" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+  	</div>
+  	<button type="submit" className="btn btn-primary">Submit</button>
+  	</form>
+  	</div>
+    </Styles>
+	);
   }
-  a, .navbar-nav, .navbar-light .nav-link {
-    color: #9FFFCB;
-    &:hover { 
-      color: white; }
+
+  onNameChange(event) {
+	this.setState({name: event.target.value})
   }
-  .navbar-brand {
-    font-size: 1.4em;
-    color: #9FFFCB;
-    &:hover { color: white; }
+
+  onEmailChange(event) {
+	this.setState({email: event.target.value})
   }
-  .form-center {
-    position: absolute !important;
-    left: 25%;
-    right: 25%;
+
+  onMessageChange(event) {
+	this.setState({message: event.target.value})
   }
-`;
-export const ContactForm = () => (
-<Styles>
-<Form>
-  <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control className="input" type="email" placeholder="name@example.com" />
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect1">
-    <Form.Label>Example select</Form.Label>
-    <Form.Control as="select">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Example multiple select</Form.Label>
-    <Form.Control as="select" multiple>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Example textarea</Form.Label>
-    <Form.Control as="textarea" rows="3" />
-  </Form.Group>
-</Form>
-</Styles>
-)
+}
+
+export default App;

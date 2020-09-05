@@ -1,17 +1,11 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
-import { Route } from "react-router-dom"
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom'
-import { ContactForm } from './ContactForm';
 const Styles = styled.div`
-  .navbar { 
-    background-color: #222; 
-  }
+  .navbar { background-color: #222; }
   a, .navbar-nav, .navbar-light .nav-link {
     color: #9FFFCB;
-    &:hover { 
-      color: white; }
+    &:hover { color: white; }
   }
   .navbar-brand {
     font-size: 1.4em;
@@ -27,15 +21,15 @@ const Styles = styled.div`
 export const NavigationBar = () => (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/">MyTodosApp</Navbar.Brand>
+      <Navbar.Brand href="/">Tutorial</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Item><Nav.Link><NavLink to="/About">About</NavLink></Nav.Link></Nav.Item> 
-          <Nav.Item><Nav.Link><NavLink to="/Todos">Todos</NavLink></Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link><NavLink to="/Contact">Contact</NavLink></Nav.Link></Nav.Item>
-          
-      </Nav>
+          <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item> 
+          <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/todos">Todos</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/Contact">Contact</Nav.Link></Nav.Item> 
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   </Styles>
