@@ -10,7 +10,9 @@ import ContactForm from './components/ContactForm'
 import About from './components/About';
 import Footer from './components/Footer';
 
-const store = compose(window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore)(MainReducer)
+
+
+const store = createStore(MainReducer)
 
 ReactDOM.render(<Provider store={store}>
   <BrowserRouter>
