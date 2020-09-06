@@ -2,6 +2,24 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions/actionCreator'
 import {bindActionCreators} from 'redux'
+import styled from 'styled-components';
+
+const Styles = styled.div`
+form{
+  margin:auto;
+  text-align:center;
+  margin-top: 2%;
+}
+@media only screen and (max-width: 600px) {
+  form {
+    margin-top:4%;
+  }
+}
+*{
+  font-family: 'Kufam', cursive !important;
+}
+`;
+
 
 class CreateTodo extends Component {
     constructor(props){

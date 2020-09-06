@@ -17,6 +17,9 @@ const Styles = styled.div`
     left: 25%;
     right: 25%;
   }
+  *{
+    font-family: 'Kufam', cursive !important;
+  }
 `;
 export const NavigationBar = () => (
   <Styles>

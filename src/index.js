@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore,} from 'redux'
 import MainReducer from './reducers/MainReducer'
 import {NavigationBar} from './components/NavigationBar'
 import App from './App';
-import { BrowserRouter as Router, Route, Switch, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route,BrowserRouter } from "react-router-dom";
 import ContactForm from './components/ContactForm'
 import About from './components/About';
 import Footer from './components/Footer';

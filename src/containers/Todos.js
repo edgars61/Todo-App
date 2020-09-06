@@ -7,27 +7,40 @@ import {
 } from "../actions/actionCreator";
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../actions/actionTypes";
 import { bindActionCreators } from "redux";
+import styled from 'styled-components';
+const Styles = styled.div`
+{
+  font-family: 'Kufam', cursive !important;
+}
+
+
+
+
+`;
+
 
 class Todos extends Component {
   render() {
     return (
+      
       <div className="col-lg-10 offset-lg-1 col-md-10 col-sm-12 col-xs-12">
+        <Styles>
         <nav style={{ marginTop: "60px" }}>
-          <ol className="breadcrumb">
+          <ol className="nav nav-tabs">
             <li
-              className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_ALL ? 'active' : '') }
+              className={"nav-link active"+ (this.props.visibilityFilter === SHOW_ALL ? 'active' : '') }
               onClick={() => this.props.setVisibilityFilter(SHOW_ALL)}
             >
              All
             </li>
             <li
-               className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_COMPLETED ? 'active' : '') }
+               className={"nav-link "+ (this.props.visibilityFilter === SHOW_COMPLETED ? 'active' : '') }
               onClick={() => this.props.setVisibilityFilter(SHOW_COMPLETED)}
             >
               Completed
             </li>
             <li
-               className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_ACTIVE ? 'active' : '') }
+               className={"nav-link  "+ (this.props.visibilityFilter === SHOW_ACTIVE ? 'active' : '') }
               onClick={() => this.props.setVisibilityFilter(SHOW_ACTIVE)}
             >
               Active
@@ -56,17 +69,19 @@ class Todos extends Component {
                     {todo.text} {todo.completed === true ? "(completed)" : ""}
                   </td>
                   <td>
-                    <span title="Mark item complete" className="fas fa-check-square" onClick={() => this.props.deleteTodo(todo.id)}
+                  <span title="Delete item" className="fas fa-check-square "
+                      onClick={() => this.props.toggleTodo(todo.id)}
+                      style={{  color: "white",
+                      fontSize: "20pt",
+                      marginRight: "20px"}}/>
+                    
+                    <span title="Mark item complete" className="fas fa-eraser" onClick={() => this.props.deleteTodo(todo.id)}
                     style={{
-                        color: "white",
-                        fontSize: "20pt",
-                        marginRight: "20px"
+                      color: "white", fontSize: "20pt"
+                        
                       }}
                     />
-                    <span title="Delete item" className="fas fa-eraser"
-                      onClick={() => this.props.toggleTodo(todo.id)}
-                      style={{ color: "white", fontSize: "20pt" }}
-                    />
+                   
                   </td>
                 </tr>
               ))}
@@ -77,12 +92,14 @@ class Todos extends Component {
             style={{ marginTop: "50px" }}
             className="col-lg-10 col-md-10 col-xs-12 col-sm-12 offset-lg-1"
           >
-            <div className="alert alert-danger" role="alert">
-              Todo List is empty or Filter results show no results
+            <div className="alert alert-danger">
+              You have no Todo items
             </div>
           </div>
         )}{" "}
+        </Styles>
       </div>
+      
     );
   }
 }

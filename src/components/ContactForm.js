@@ -12,6 +12,9 @@ form{
     margin-top:4%;
   }
 }
+*{
+  font-family: 'Kufam', cursive !important;
+}
 `;
 
 class App extends React.Component {

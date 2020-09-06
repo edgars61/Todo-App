@@ -58,7 +58,7 @@ class Table extends Component {
                   </td>
                   <td>
                     <span
-                      className="fas fa-check-square"
+                      className="fas fa-eraser"
                       onClick={() => this.props.deleteTodo(todo.id)}
                       style={{
                         color: "white",
@@ -67,7 +67,7 @@ class Table extends Component {
                       }}
                     />
                     <span
-                      className="fas fa-check-circle"
+                      className="fas fa-check-square "
                       onClick={() => this.props.toggleTodo(todo.id)}
                       style={{ color: "white", fontSize: "20pt" }}
                     />
