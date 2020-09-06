@@ -1,23 +1,30 @@
 
 import React, { Component } from 'react'
 import CreateTodo from './containers/CreateTodo'
-import Table from './containers/Table'
+import Todos from './containers/Todos'
+import styled from 'styled-components';
+const Styles = styled.div`
+.container{
+  margin-top: 5%;
+}
+`;
 
 class App extends Component {
   render() {
     return (
-      
+    <Styles>
       <div className="App">
       
-        <div className="container" style={{ marginTop: "80px"}} >
+        <div className="container">
           <div className="row">
             <div className="col-lg-10 offset-lg-2 col-md-10 col-sm-12 col-xs-12">
               <CreateTodo />
             </div>
-            <Table />
+            <Todos/>
           </div>
         </div>
       </div>
+      </Styles>
     );
   }
 }
