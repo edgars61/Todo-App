@@ -23,5 +23,4 @@ ReactDOM.render(<Provider store={store}>
   <Route path="/About" component={About}/>
   </Router>
   </BrowserRouter>
-  <Footer/>
   </Provider>, document.getElementById('root'));

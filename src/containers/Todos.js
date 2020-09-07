@@ -9,8 +9,41 @@ import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../actions/actionTypes";
 import { bindActionCreators } from "redux";
 import styled from 'styled-components';
 const Styles = styled.div`
+
+.myTodos{
+ 
+
+}
 {
   font-family: 'Kufam', cursive !important;
+}
+.myTodos{
+  background-color:#202020;
+  height:100%;
+  color:white;
+
+}
+
+
+.mainHeader{
+  margin-bottom:4%;
+  margin-top:4%;
+  font-size:1.2em;
+  text-align:center;
+  padding-top:4%;
+}
+.todoItem{
+  font-size:1.2em;
+ 
+}
+.actionButtons{
+  
+    color:white;
+    font-size: 20pt;
+
+.deleteButton{
+
+
 }
 
 
@@ -23,7 +56,7 @@ class Todos extends Component {
   render() {
     return (
       
-      <div className="col-lg-10 offset-lg-1 col-md-10 col-sm-12 col-xs-12">
+      <div className="col-lg-10 offset-lg-1 col-md-10 col-sm-12 col-xs-12 todos" style={{marginBottom:"10%" }}>
         <Styles>
         <nav style={{ marginTop: "60px" }}>
           <ol className="nav nav-tabs">
@@ -39,8 +72,7 @@ class Todos extends Component {
             >
               Completed
             </li>
-            <li
-               className={"nav-link  "+ (this.props.visibilityFilter === SHOW_ACTIVE ? 'active' : '') }
+            <li className={"nav-link  "+ (this.props.visibilityFilter === SHOW_ACTIVE ? 'active' : '') }
               onClick={() => this.props.setVisibilityFilter(SHOW_ACTIVE)}
             >
               Active
@@ -48,45 +80,39 @@ class Todos extends Component {
           </ol>
         </nav>
         {this.props.todos.length !== 0 ? (
-          <table
-            style={{ marginTop: "60px" }}
-            className="table table-hover table-dark"
-          >
-            <thead>
-              <tr>
-                <th scope="col">Todos</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div style={{ marginTop: "60px" }}className="container myTodos">
+            <div className="container mainHeader ">
+              
+                <div className="row">
+                <span className="todosHeader col-6 col-sm-6" >Todos</span>
+                <span className="actionsHeader col-6 col-sm-6">Actions</span>
+                </div>
+              
+            </div>
+            <div class="tbody container">
               {this.props.todos.map(todo => (
-                <tr key={todo.id}>
-                  <td
+                <div class="tr row" key={todo.id}>
+                  <span className="td todoItem col-6 col-sm-6"
                     style={{
                       textDecoration: todo.completed ? "line-through" : "none"
                     }}
                   >
                     {todo.text} {todo.completed === true ? "(completed)" : ""}
-                  </td>
-                  <td>
-                  <span title="Delete item" className="fas fa-check-square "
+                  </span>
+                  <span className="td actionButtons col-6 col-sm-6">
+                  <span title="Delete item" className="fas fa-check-square completeButton col-6 col-sm-6"
                       onClick={() => this.props.toggleTodo(todo.id)}
-                      style={{  color: "white",
-                      fontSize: "20pt",
-                      marginRight: "20px"}}/>
+                      />
                     
-                    <span title="Mark item complete" className="fas fa-eraser" onClick={() => this.props.deleteTodo(todo.id)}
-                    style={{
-                      color: "white", fontSize: "20pt"
-                        
-                      }}
+                    <span title="Mark item complete" className="fas fa-eraser deleteButton col-6 col-sm-6" onClick={() => this.props.deleteTodo(todo.id)}
+                    
                     />
                    
-                  </td>
-                </tr>
+                  </span>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
         ) : (
           <div
             style={{ marginTop: "50px" }}

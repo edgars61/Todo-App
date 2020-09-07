@@ -11,20 +11,34 @@ const Styles = styled.div`
   width: 100%;
   color:#9FFFCB;
   text-align:center;
+
+}
+@media only screen and (max-width: 600px) {
+  .footer {
+    height:5%;
+  }
+  .footerRow{
+    padding-bottom:10%;
+  }
 }
 *{
   font-family: 'Kufam', cursive !important;
 }
+*{
+  border-style:solid;
+  border-color:black;
+}
+
   
 `;
 
 const Footer = () => (
  <Styles>
   <div className="footer container-fluid">
-    <div className="row">
-    <div className="col-lg-4">Helo</div>
-    <p className="col-lg-4">This is some content in sticky footer</p>
-    <span className="col-lg-4">HI</span>
+    <div className="row footerRow">
+    <div className="col-lg-4 col-4">Helo</div>
+    <p className="col-lg-4 col-4" >This is some content in sticky footer</p>
+    <span className="col-lg-4 col-4">HI</span>
     </div>
   </div>
 
