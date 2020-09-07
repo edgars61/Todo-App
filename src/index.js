@@ -8,7 +8,7 @@ import App from './App';
 import { BrowserRouter as Router, Route,BrowserRouter } from "react-router-dom";
 import ContactForm from './components/ContactForm'
 import About from './components/About';
-import Footer from './components/Footer';
+
 
 
 
