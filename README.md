@@ -70,4 +70,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 =======
 # Todo-App
 A Todo app created with react
+Edgar Santana
 >>>>>>> 493e3d28e8c292999a36592df98543db510ad2b8
