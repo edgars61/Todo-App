@@ -58,7 +58,7 @@ class Todos extends Component {
       
       <div className="col-lg-10 offset-lg-1 col-md-10 col-sm-12 col-xs-12 todos" style={{marginBottom:"10%" }}>
         <Styles>
-        <nav style={{ marginTop: "60px" }}>
+        <nav >
           <ol className="nav nav-tabs">
             <li
               className={"nav-link active"+ (this.props.visibilityFilter === SHOW_ALL ? 'active' : '') }
@@ -80,7 +80,7 @@ class Todos extends Component {
           </ol>
         </nav>
         {this.props.todos.length !== 0 ? (
-          <div style={{ marginTop: "60px" }}className="container myTodos">
+          <div className="container myTodos">
             <div className="container mainHeader ">
               
                 <div className="row">
@@ -115,7 +115,7 @@ class Todos extends Component {
           </div>
         ) : (
           <div
-            style={{ marginTop: "50px" }}
+          
             className="col-lg-10 col-md-10 col-xs-12 col-sm-12 offset-lg-1"
           >
             <div className="alert alert-danger">
