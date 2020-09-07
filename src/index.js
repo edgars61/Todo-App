@@ -20,7 +20,7 @@ ReactDOM.render(<Provider store={store}>
   <NavigationBar />
   <Route path="/Contact" component={ContactForm}/>
   <Route path="/Todos" component={App}/>
-  <Route path="/About" component={About}/>
+  <Route exact strict path ="/" component={About}/>
   </Router>
   </BrowserRouter>
   </Provider>, document.getElementById('root'));
